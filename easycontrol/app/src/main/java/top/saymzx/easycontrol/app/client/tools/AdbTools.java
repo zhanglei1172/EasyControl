@@ -43,10 +43,6 @@ public class AdbTools {
     }).start();
   }
 
-  /** Run a short-lived shell command and return its output to non-UI callers. */
-  public static String runCommand(Device device, String cmd) throws Exception {
-    return connectADB(device).runAdbCmd(cmd);
-  }
 
   public static void restartOnTcpip(Device device, MyInterface.MyFunctionBoolean handle) {
     new Thread(() -> {

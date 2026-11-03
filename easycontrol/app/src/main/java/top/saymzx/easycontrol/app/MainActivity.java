@@ -18,7 +18,6 @@ import top.saymzx.easycontrol.app.databinding.ActivityMainBinding;
 import top.saymzx.easycontrol.app.entity.AppData;
 import top.saymzx.easycontrol.app.entity.Device;
 import top.saymzx.easycontrol.app.helper.DeviceListAdapter;
-import top.saymzx.easycontrol.app.helper.HttpControlServer;
 import top.saymzx.easycontrol.app.helper.MyBroadcastReceiver;
 import top.saymzx.easycontrol.app.helper.ViewTools;
 
@@ -35,8 +34,6 @@ public class MainActivity extends Activity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     AppData.init(this);
-    // LAN browser/agent bridge. The service is local to this controller device.
-    HttpControlServer.start();
     ViewTools.setStatusAndNavBar(this);
     ViewTools.setLocale(this);
     activityMainBinding = ActivityMainBinding.inflate(this.getLayoutInflater());
