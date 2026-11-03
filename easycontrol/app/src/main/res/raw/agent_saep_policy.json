@@ -1,0 +1,21 @@
+{
+  "schema": "AGRP-Policy/1.0",
+  "policy_version": 1,
+  "package": "top.saymzx.easycontrol.app",
+  "updated_at": "1793577600000",
+  "default_policy": {
+    "app": {
+      "global_disable": false,
+      "screenshot_disable": false,
+      "input_disable": false
+    }
+  },
+  "scope": {
+    "agent_intents": {
+      "modify_content": true,
+      "post_content": true,
+      "delete_content": true,
+      "account_incentive": true
+    }
+  }
+}

@@ -18,6 +18,7 @@ import top.saymzx.easycontrol.app.databinding.ActivityMainBinding;
 import top.saymzx.easycontrol.app.entity.AppData;
 import top.saymzx.easycontrol.app.entity.Device;
 import top.saymzx.easycontrol.app.helper.DeviceListAdapter;
+import top.saymzx.easycontrol.app.helper.HttpControlServer;
 import top.saymzx.easycontrol.app.helper.MyBroadcastReceiver;
 import top.saymzx.easycontrol.app.helper.ViewTools;
 
@@ -34,12 +35,13 @@ public class MainActivity extends Activity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     AppData.init(this);
+    // LAN browser/agent bridge. The service is local to this controller device.
+    HttpControlServer.start();
     ViewTools.setStatusAndNavBar(this);
     ViewTools.setLocale(this);
     activityMainBinding = ActivityMainBinding.inflate(this.getLayoutInflater());
     setContentView(activityMainBinding.getRoot());
-    // 检测激活
-    checkActive();
+    // The proprietary activation service is not part of this open-source build.
     // 设置设备列表适配器
     deviceListAdapter = new DeviceListAdapter(this);
     activityMainBinding.devicesList.setAdapter(deviceListAdapter);
@@ -60,11 +62,6 @@ public class MainActivity extends Activity {
   protected void onDestroy() {
     myBroadcastReceiver.unRegister(this);
     super.onDestroy();
-  }
-
-  // 检测激活
-  private void checkActive() {
-    if (!AppData.setting.getIsActive()) startActivity(new Intent(this, ActiveActivity.class));
   }
 
   // 设置按钮监听

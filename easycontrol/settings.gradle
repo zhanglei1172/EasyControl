@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 rootProject.name = "Easycontrol"
 include ':app'
 include ':server'
-include ':cloud'
